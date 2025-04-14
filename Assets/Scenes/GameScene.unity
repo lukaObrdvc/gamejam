@@ -153,7 +153,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -278, y: 469}
+  m_AnchoredPosition: {x: -495, y: 427}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &235596054
@@ -597,7 +597,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -571, y: 470}
+  m_AnchoredPosition: {x: -822, y: 427}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &472564872
@@ -900,7 +900,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.54509807}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2961,7 +2961,7 @@ MonoBehaviour:
   skeletonSprite: {fileID: 4354231566380549168, guid: 709cfad468ac7c04998d6051fefb2c32, type: 3}
   goblinSprite: {fileID: 6515602111186535438, guid: 8d76b6e06f5de444f8a235c64438c154, type: 3}
   orcSprite: {fileID: -4864586392625904324, guid: 091057e23b744964886da669aeb18009, type: 3}
-  ghostSprite: {fileID: 6515602111186535438, guid: 8d76b6e06f5de444f8a235c64438c154, type: 3}
+  ghostSprite: {fileID: -5899927303015767666, guid: 29e3931502f1e584f8651dfcc3962b14, type: 3}
   wraithSprite: {fileID: -2858330702786226967, guid: 23667aa4517142246b3ea9c59c04c45c, type: 3}
   marshFrameSprite: {fileID: -8718480401680330099, guid: 693c7a55031518e46ac5b7d9bbf997a8, type: 3}
   graveyardFrameSprite: {fileID: 1078737281, guid: 98727682a1add27439fb140a55a99e8d, type: 3}

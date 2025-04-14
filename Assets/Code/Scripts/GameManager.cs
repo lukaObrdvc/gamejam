@@ -17,6 +17,7 @@
 // put in build
 // change build /....
 
+
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -252,8 +253,38 @@ public class GameManager : MonoBehaviour
         // delete prefabs here
         foreach (Transform child in enemyQueuePanel)
             Destroy(child.gameObject);
+
+        float p = Random.Range(0f,1f);
+
+        // 30
+        // 25
+        // 20
+        // 15
+        // 10
         
-        enemiesInCurrentTurn = Random.Range(1,6);
+        
+        if (p <= 0.3f)
+        {
+            enemiesInCurrentTurn = 1;
+        }
+        else if (p <= 0.55f)
+        {
+            enemiesInCurrentTurn = 2;
+        }
+        else if (p <= 0.75f)
+        {
+            enemiesInCurrentTurn = 3;
+        }
+        else if (p <= 0.9f)
+        {
+            enemiesInCurrentTurn = 4;
+        }
+        else
+        {
+            enemiesInCurrentTurn = 5;           
+        }
+        
+        // enemiesInCurrentTurn = Random.Range(1,6);
         for (int i = 0; i < enemiesInCurrentTurn; i++)
         {
             Enemy newEnemy = new Enemy();
@@ -269,40 +300,40 @@ public class GameManager : MonoBehaviour
                     {
                         newEnemy.hp = 10;
                         newEnemy.block = 0;
-                        newEnemy.attack = 5;
+                        newEnemy.attack = 3;
                         newEnemySprite = batSprite;
                     } break;
                 case EnemyType.Snail:
                     {
                         newEnemy.hp = 1;
-                        newEnemy.block = 3;
+                        newEnemy.block = 1;
                         newEnemy.attack = 7;
                         newEnemySprite = snailSprite;
                     } break;
                 case EnemyType.Zombie:
                     {
-                        newEnemy.hp = 15;
+                        newEnemy.hp = 20;
                         newEnemy.block = 0;
                         newEnemy.attack = 5;
                         newEnemySprite = zombieSprite;
                     } break;
                 case EnemyType.Skeleton:
                     {
-                        newEnemy.hp = 1;
-                        newEnemy.block = 15;
-                        newEnemy.attack = 15;
+                        newEnemy.hp = 5;
+                        newEnemy.block = 5;
+                        newEnemy.attack = 10;
                         newEnemySprite = skeletonSprite;
                     } break;
                 case EnemyType.Goblin:
                     {
-                        newEnemy.hp = 5;
+                        newEnemy.hp = 15;
                         newEnemy.block = 0;
-                        newEnemy.attack = 20;
+                        newEnemy.attack = 30;
                         newEnemySprite = goblinSprite;
                     } break;
                 case EnemyType.Orc:
                     {
-                        newEnemy.hp = 10;
+                        newEnemy.hp = 40;
                         newEnemy.block = 0;
                         newEnemy.attack = 20;
                         newEnemySprite = orcSprite;
@@ -310,15 +341,15 @@ public class GameManager : MonoBehaviour
                 case EnemyType.Ghost:
                     {
                         newEnemy.hp = 1;
-                        newEnemy.block = 30;
-                        newEnemy.attack = 20;
+                        newEnemy.block = 99;
+                        newEnemy.attack = 50;
                         newEnemySprite = ghostSprite;
                     } break;
                 case EnemyType.Wraith:
                     {
-                        newEnemy.hp = 15;
-                        newEnemy.block = 15;
-                        newEnemy.attack = 30;
+                        newEnemy.hp = 40;
+                        newEnemy.block = 40;
+                        newEnemy.attack = 40;
                         newEnemySprite = wraithSprite;
                     } break;                    
                 default:
@@ -375,32 +406,32 @@ public class GameManager : MonoBehaviour
                 case ChoiceType.boostMaxHp:
                     {
                         choiceSprites[i].sprite  = boosthpSprite;
-                        choiceText[i].text = "increase by " + 5;
+                        choiceText[i].text = "increase MAX HP by " + 3;
                     } break;
                 case ChoiceType.boostHpRegen:
                     {
                         choiceSprites[i].sprite   = boosthpRegenSprite;
-                        choiceText[i].text = "increase by " + 3;
+                        choiceText[i].text = "increase HP REGEN by " + 3;
                     } break;
                 case ChoiceType.boostAttackPower:
                     {
                         choiceSprites[i].sprite   = boostattackPowerSprite;
-                        choiceText[i].text = "increase by " + 1;
+                        choiceText[i].text = "increase ATTACK by " + 3;
                     } break;
                 case ChoiceType.boostArmorPen:
                     {
                         choiceSprites[i].sprite   = boostarmorPenSprite;
-                        choiceText[i].text = "increase by " + 0.05;
+                        choiceText[i].text = "increase ARMOR PENETRATIO by " + 0.03;
                     } break;
                 case ChoiceType.boostAOE:
                     {
                         choiceSprites[i].sprite   = boostaoeSprite;
-                        choiceText[i].text = "increase by " + 0.05;
+                        choiceText[i].text = "increase AREA OF EFFECT by " + 0.03;
                     } break;
                 case ChoiceType.boostBlock:
                     {
                         choiceSprites[i].sprite   = boostblockSprite;
-                        choiceText[i].text = "increase by " + 3;
+                        choiceText[i].text = "increase BLOCK by " + 5;
                     } break;                    
                 case ChoiceType.specialBlocksteal:
                     {
@@ -410,7 +441,7 @@ public class GameManager : MonoBehaviour
                 case ChoiceType.specialLifesteal:
                     {
                         choiceSprites[i].sprite = special1Sprite;
-                        choiceText[i].text    = "Steal HP from enemies with lower DMG than you";
+                        choiceText[i].text    = "Get HP of enemies with lower DMG than you";
                     } break;
                 case ChoiceType.specialBlockRegen:
                     {
@@ -433,11 +464,11 @@ public class GameManager : MonoBehaviour
         {
             case ChoiceType.boostMaxHp:
                 {
-                    buildState.maxHp += 5;
+                    buildState.maxHp += 3;
                 } break;
             case ChoiceType.boostHpRegen:
                 {
-                    buildState.hpRegen += 1;
+                    buildState.hpRegen += 3;
                 } break;
             case ChoiceType.boostAttackPower:
                 {
@@ -453,7 +484,7 @@ public class GameManager : MonoBehaviour
                 } break;
             case ChoiceType.boostBlock:
                 {
-                    resourcesState.block += 3;
+                    resourcesState.block += 5;
                 } break;                
             case ChoiceType.specialBlocksteal:
                  {
@@ -544,11 +575,14 @@ public class GameManager : MonoBehaviour
         
         if (buildState.aoe > 1) buildState.aoe = 1;
         if (buildState.armorPen > 1) buildState.armorPen = 1;
-        if (buildState.hpRegen > 33) buildState.hpRegen = 33;
+        if (buildState.hpRegen > 50) buildState.hpRegen = 50; // zz
         if (buildState.attackPower > 99) buildState.attackPower = 99;
         if (buildState.maxHp > 99) buildState.maxHp = 99;
         if (resourcesState.block > 99) resourcesState.block = 99;
-        if (resourcesState.hp > buildState.maxHp) resourcesState.hp = buildState.maxHp;        
+        if (resourcesState.hp > buildState.maxHp) resourcesState.hp = buildState.maxHp;
+
+        // buildState.aoe = (float)Math.Round(buildState.aoe, 2);
+        // buildState.armorPen = (float)Math.Round(buildState.armorPen, 2);
     }
 
     void ChooseTarget()
@@ -715,8 +749,8 @@ public class GameManager : MonoBehaviour
         hpRegenText.text     = buildState.hpRegen.ToString();
         blockText.text       = resourcesState.block.ToString();
         attackPowerText.text = buildState.attackPower.ToString();
-        armorPenText.text    = buildState.armorPen.ToString();
-        aoeText.text         = buildState.aoe.ToString();
+        armorPenText.text    = buildState.armorPen.ToString("F2");
+        aoeText.text         = buildState.aoe.ToString("F2");
         
         turnText.text        = "TURN " + metaState.turn.ToString() + "/" + maxTurn.ToString();
         killCountText.text   = "KILLS " + metaState.killCount.ToString();
@@ -759,9 +793,9 @@ public class GameManager : MonoBehaviour
         }
 
         // @hardcoded
-        buildState.maxHp = 50;
-        buildState.hpRegen = 10;
-        buildState.attackPower = 7;
+        buildState.maxHp = 30;
+        buildState.hpRegen = 5;
+        buildState.attackPower = 10;
         buildState.armorPen = 0;
         buildState.aoe = 0;
 
@@ -769,8 +803,8 @@ public class GameManager : MonoBehaviour
         metaState.killCount = 0;
         metaState.dmgTaken = 0;
 
-        resourcesState.hp = 50;
-        resourcesState.block = 50;
+        resourcesState.hp = 30;
+        resourcesState.block = 30;
 
         GenerateEnemies();
         GenerateChoices();
